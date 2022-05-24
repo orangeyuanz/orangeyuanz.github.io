@@ -16,21 +16,21 @@
   <meta name="author" content="Orange">
   <meta name="keywords" content="">
   
-    <meta name="description" content="JDK简介1.JDK即Java Develop Kit，是Java开发工具包。 开发Java程序必须有Java开发环境，即Java开发工具包，这个工具包包含了编译、运行、调试等关键命令，哪怕运行Eclipse,NetBeans等开发工具，也要有JDK或JRE的支持，所以开发Java程序之前的第一步准备就是获取JDK，该工具包要到官网下载。 2.JDK的基本组件包括：     javac:编译器，将">
+    <meta name="description" content="Canny算法步骤1.对图像进行灰度化2.对图像进行高斯滤波高斯平滑水平和垂直方向呈现高斯分布，更突出了中心点在像素平滑后的权重，相比于均值滤波而言，有着更好的平滑效果。 3.检测图像中的水平、垂直和对角边缘（如 Prewitt， Sobel 算子等）4.对梯度幅值进行非极大值抑制  通俗意义上是指寻找像素点局部最大值,将非极大值点所的灰度值置为0,这样可以剔除掉一大部分 5.用双阈值算法检测和连">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JDK1.8安装">
-<meta property="og:url" content="https://orageyuanz.github.io/post/jdk%E7%9A%84%E5%AE%89%E8%A3%85.html">
+<meta property="og:title" content="canny边缘检测算法">
+<meta property="og:url" content="https://orageyuanz.github.io/post/canny.html">
 <meta property="og:site_name" content="Orange|Blog">
-<meta property="og:description" content="JDK简介1.JDK即Java Develop Kit，是Java开发工具包。 开发Java程序必须有Java开发环境，即Java开发工具包，这个工具包包含了编译、运行、调试等关键命令，哪怕运行Eclipse,NetBeans等开发工具，也要有JDK或JRE的支持，所以开发Java程序之前的第一步准备就是获取JDK，该工具包要到官网下载。 2.JDK的基本组件包括：     javac:编译器，将">
+<meta property="og:description" content="Canny算法步骤1.对图像进行灰度化2.对图像进行高斯滤波高斯平滑水平和垂直方向呈现高斯分布，更突出了中心点在像素平滑后的权重，相比于均值滤波而言，有着更好的平滑效果。 3.检测图像中的水平、垂直和对角边缘（如 Prewitt， Sobel 算子等）4.对梯度幅值进行非极大值抑制  通俗意义上是指寻找像素点局部最大值,将非极大值点所的灰度值置为0,这样可以剔除掉一大部分 5.用双阈值算法检测和连">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-24T01:07:15.903Z">
-<meta property="article:modified_time" content="2022-05-24T08:29:13.059Z">
+<meta property="article:published_time" content="2022-05-24T00:46:14.998Z">
+<meta property="article:modified_time" content="2022-05-24T08:34:09.258Z">
 <meta property="article:author" content="Orange">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>JDK1.8安装 - Orange|Blog</title>
+  <title>canny边缘检测算法 - Orange|Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -193,7 +193,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="JDK1.8安装"></span>
+            <span id="subtitle" data-typed-text="canny边缘检测算法"></span>
           
         </div>
 
@@ -204,8 +204,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-24 09:07" pubdate>
-          2022年5月24日 上午
+        <time datetime="2022-05-24 08:46" pubdate>
+          2022年5月24日 早上
         </time>
       </span>
     
@@ -216,7 +216,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          578 字
+          227 字
         
       </span>
     
@@ -227,7 +227,7 @@
         
         
         
-          5 分钟
+          2 分钟
         
       </span>
     
@@ -265,26 +265,13 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">JDK1.8安装</h1>
+            <h1 style="display: none">canny边缘检测算法</h1>
             
             <div class="markdown-body">
               
-              <h2 id="JDK简介"><a href="#JDK简介" class="headerlink" title="JDK简介"></a>JDK简介</h2><p>1.JDK即Java Develop Kit，是Java开发工具包。</p>
-<p>开发Java程序必须有Java开发环境，即Java开发工具包，这个工具包包含了编译、运行、调试等关键命令，哪怕运行Eclipse,NetBeans等开发工具，也要有JDK或JRE的支持，所以开发Java程序之前的第一步准备就是获取JDK，该工具包要到官网下载。</p>
-<p>2.JDK的基本组件包括：</p>
-<pre><code class="hljs">    javac:编译器，将源程序转成字节码。
-
-    jar:打包工具,将相关类文件打包成一个文件。
-
-    javadoc：文档生成器，从源码注释中提取文档。
-
-    jdb：debugger，差错工具。
-</code></pre>
-<p>3.JDK中还包括完整的JRE（java runtime environment,Java运行环境），也被称为Private Runtime,包含了用于产品环境的各种类库，以及给开发人员使用的补充库，如国际化的库、IDL库。JDK中海包括各种例子程序，用以展示Java API中的各部分。</p>
-<p>4.JDK由一个标准类库和一组建立、测试程序及建立文档的Java实用程序组成。</p>
-<p>其核心Java API是一些预定义的类库，开发人员需要用这些类来访问Java的功能。</p>
-<p>Java API包括一些重要的语言结构以及基本图形、网络和文件I/O。</p>
-<p>一般来说，Java API的非I/O部分对于运行Java的所有平台是相同的，而I/O部分则仅在通用Java环境中实现。</p>
+              <h1 id="Canny算法步骤"><a href="#Canny算法步骤" class="headerlink" title="Canny算法步骤"></a>Canny算法步骤</h1><h2 id="1-对图像进行灰度化"><a href="#1-对图像进行灰度化" class="headerlink" title="1.对图像进行灰度化"></a>1.对图像进行灰度化</h2><h2 id="2-对图像进行高斯滤波"><a href="#2-对图像进行高斯滤波" class="headerlink" title="2.对图像进行高斯滤波"></a>2.对图像进行高斯滤波</h2><p>高斯平滑水平和垂直方向呈现高斯分布，更突出了中心点在像素平滑后的权重，相比于均值滤波而言，有着更好的平滑效果。</p>
+<h2 id="3-检测图像中的水平、垂直和对角边缘（如-Prewitt，-Sobel-算子等）"><a href="#3-检测图像中的水平、垂直和对角边缘（如-Prewitt，-Sobel-算子等）" class="headerlink" title="3.检测图像中的水平、垂直和对角边缘（如 Prewitt， Sobel 算子等）"></a>3.检测图像中的水平、垂直和对角边缘（如 Prewitt， Sobel 算子等）</h2><h2 id="4-对梯度幅值进行非极大值抑制"><a href="#4-对梯度幅值进行非极大值抑制" class="headerlink" title="4.对梯度幅值进行非极大值抑制"></a>4.对梯度幅值进行非极大值抑制</h2><p>  通俗意义上是指寻找像素点局部最大值,将非极大值点所的灰度值置为0,这样可以剔除掉一大部分</p>
+<h2 id="5-用双阈值算法检测和连接边缘"><a href="#5-用双阈值算法检测和连接边缘" class="headerlink" title="5.用双阈值算法检测和连接边缘"></a>5.用双阈值算法检测和连接边缘</h2><p>大于高阈值的为强边缘，小于低阈值不是边缘。介于中间的是弱边缘。</p>
 
               
             </div>
@@ -301,8 +288,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>JDK1.8安装</div>
-      <div>https://orageyuanz.github.io/post/jdk的安装.html</div>
+      <div>canny边缘检测算法</div>
+      <div>https://orageyuanz.github.io/post/canny.html</div>
     </div>
     <div class="license-meta">
       
@@ -344,21 +331,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/post/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2.html" title="利用hexo搭建博客">
+                      <a href="/post/jdk%E7%9A%84%E5%AE%89%E8%A3%85.html" title="JDK1.8安装">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">利用hexo搭建博客</span>
+                        <span class="hidden-mobile">JDK1.8安装</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/post/canny.html" title="canny边缘检测算法">
-                        <span class="hidden-mobile">canny边缘检测算法</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
